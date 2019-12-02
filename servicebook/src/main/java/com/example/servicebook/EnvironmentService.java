@@ -28,15 +28,12 @@ public class EnvironmentService {
 		this.errorMsg = errorMsg;
 	}
 
-	public String getEndpointDisplay() {
-		if(errorMsg != null)
-			return errorMsg;
-		String endpoints = "";
-		for (String endpoint : this.endpoints) {
-			endpoints += endpoint +"\n";
-		}
-		return endpoints;
-
-	}
+	/*
+	 * public String getEndpointDisplay() { if(errorMsg != null) return errorMsg;
+	 * String endpoints = ""; for (String endpoint : this.endpoints) { endpoints +=
+	 * endpoint +"\r\n"; } return endpoints;
+	 * 
+	 * }
+	 */
 
 }

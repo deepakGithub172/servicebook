@@ -17,7 +17,7 @@ public class ServiceController {
 	public ModelAndView getServices() throws SSLException {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("environments",getEnvironmentData());
-		mv.setViewName("serviceView.jsp");
+		mv.setViewName("serviceView");
 		return mv;
 	}
 
@@ -47,7 +47,9 @@ public class ServiceController {
 		servs.add(serv1);
 		Environment env = new Environment();
 		env.setName("Test");
+		env.setDomain("10.123.12");
 		env.setServices(servs);
+		env.setErrorMsg("error");
 		List<Environment> envs = new ArrayList<>();
 		envs.add(env);
 		return envs;
