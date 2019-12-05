@@ -41,19 +41,20 @@ public class WebService {
 		return WebClient.builder().clientConnector(new ReactorClientHttpConnector(httpClient)).build();
 	}
 
-	public List<Environment> getDataFromEnvironments() throws SSLException{
+	public List<Environment> getDataFromEnvironments(String envName) throws SSLException{
 		WebClient builder = createWebClient();
 		List<Environment> environments = new ArrayList<>();
 		//TODO--for loop for multiple environments
-		environments.add(getDataFromEnvironment(builder));
+		environments.add(getDataFromEnvironment(builder, envName));
 		return environments;
 	}
 
-	public Environment getDataFromEnvironment(WebClient builder) {
+	public Environment getDataFromEnvironment(WebClient builder, String envName) {
 
+		Static_Environment static_environment = Static_Environment.valueOf(envName);
 		Environment environment = new Environment();
-		environment.setName("DEV1");//TODO--
-		environment.setDomain(DOMAIN);
+		environment.setName(static_environment.name());
+		environment.setDomain(static_environment.getDomain());
 		try {
 			loginToPortal(builder);
 			JSONObject allAPIsObj = getAllAPIS(builder);
